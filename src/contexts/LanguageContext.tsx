@@ -339,7 +339,7 @@ const getTranslations = () => {
       'currency.gbp': 'British Pound',
       
       // User Counter
-      'userCounter.text': '👥 We are already {count} users!'
+      'userCounter.text': '👥 We are already {count} users!',
     
       'categories.no_categories': 'No categories yet',
       'categories.add_first': 'Add your first category',
@@ -568,7 +568,7 @@ const getTranslations = () => {
       'currency.gbp': 'Британський фунт',
       
       // User Counter
-      'userCounter.text': '👥 Нас уже {count} користувачів!'
+      'userCounter.text': '👥 Нас уже {count} користувачів!',
     
       'categories.no_categories': 'Користувацьких категорій немає',
       'categories.add_first': 'Додай першу категорію, щоб почати',
@@ -806,7 +806,7 @@ const getTranslations = () => {
       'currency.gbp': 'Funt brytyjski',
       
       // User Counter
-      'userCounter.text': '👥 Jesteśmy już {count} użytkowników!'
+      'userCounter.text': '👥 Jesteśmy już {count} użytkowników!',
     
       'categories.no_categories': 'Brak niestandardowych kategorii',
       'categories.add_first': 'Dodaj pierwszą kategorię, aby rozpocząć',
