@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Financial Manager Design System - Modern & Clean */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Card system */
+    --card: 240 10% 7%;
+    --card-foreground: 0 0% 98%;
+
+    /* Interactive elements */
+    --popover: 240 10% 7%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary brand - Financial Green */
+    --primary: 142 71% 45%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 142 71% 50%;
+
+    /* Secondary - Accent Blue */
+    --secondary: 240 10% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted elements */
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Accent colors */
+    --accent: 240 10% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Status colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 142 71% 45%;
+
+    /* Financial specific colors */
+    --income: 142 71% 45%;
+    --expense: 0 84.2% 60.2%;
+    --balance: 217 91% 60%;
+    
+    /* Category colors */
+    --category-food: 25 95% 53%;
+    --category-transport: 221 83% 53%;
+    --category-housing: 262 83% 58%;
+    --category-entertainment: 280 87% 65%;
+    --category-health: 142 71% 45%;
+    --category-shopping: 340 82% 52%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(142 71% 35%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(240 10% 7%) 0%, hsl(240 10% 9%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(142 71% 45%) 0%, hsl(217 91% 60%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(240 10% 3.9% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(240 10% 3.9% / 0.1), 0 2px 4px -1px hsl(240 10% 3.9% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(240 10% 3.9% / 0.1), 0 4px 6px -2px hsl(240 10% 3.9% / 0.05);
+    --shadow-xl: 0 20px 25px -5px hsl(240 10% 3.9% / 0.1), 0 10px 10px -5px hsl(240 10% 3.9% / 0.04);
+
+    /* Animations */
+    --transition-all: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-colors: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    --radius: 0.75rem;
+
+    /* Sidebar colors */
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 240 5% 64.9%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 10% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 10% 15%;
+    --sidebar-ring: 142 71% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations for financial elements */
+@keyframes pulse-success {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 hsl(var(--success) / 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 0 8px hsl(var(--success) / 0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-success {
+  animation: pulse-success 2s infinite;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  /* Smooth scrolling for mobile */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Improve touch targets for mobile */
+  button, 
+  input[type="button"], 
+  input[type="submit"], 
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better font sizes for mobile */
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-xl {
+    font-size: 1.25rem;
+  }
+}
