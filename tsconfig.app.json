@@ -21,15 +21,14 @@
     "noImplicitAny": false,
     "noFallthroughCasesInSwitch": false,
 
-    /* FIX: Додано правильні налаштування для роботи з React та TypeScript */
+    /* FIX: Виправлено конфігурацію для правильної роботи TypeScript */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*", "src/**/*.tsx", "src/**/*.ts"]
+  "include": ["src"]
 }

@@ -41,8 +41,7 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
       return {
         name: category.name,
         value,
-        // FIX: Конвертація Tailwind кольору в hex або використання fallback
-        color: convertTailwindColorToHex(category.color)
+        color: category.color
       };
     })
     .filter(item => item.value > 0); // тільки категорії з витратами
@@ -66,7 +65,7 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
     return null;
   };
 
-  // FIX: Виправлено типи для legend з правильними кольорами
+  // FIX: Виправлено типи для legend
   const CustomLegend = ({ payload }: { 
     payload?: Array<{ value: string; color: string }> 
   }) => {
@@ -91,25 +90,6 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
     "#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#00c49f",
     "#0088fe", "#ffbb28", "#ff8042", "#a4de6c", "#d0ed57"
   ];
-
-  // FIX: Функція для конвертації Tailwind кольорів у hex
-  const convertTailwindColorToHex = (tailwindColor: string): string => {
-    const colorMap: Record<string, string> = {
-      'bg-category-food': '#f97316',      // orange-500
-      'bg-category-transport': '#3b82f6', // blue-500  
-      'bg-category-housing': '#8b5cf6',   // violet-500
-      'bg-category-entertainment': '#a855f7', // purple-500
-      'bg-category-health': '#10b981',    // emerald-500
-      'bg-category-shopping': '#ec4899',  // pink-500
-      'bg-income-salary': '#22c55e',      // green-500
-      'bg-income-freelance': '#06b6d4',   // cyan-500
-      'bg-income-investment': '#84cc16',  // lime-500
-      'bg-income-gift': '#f59e0b',        // amber-500
-      'bg-income-other': '#6b7280'        // gray-500
-    };
-    
-    return colorMap[tailwindColor] || '#64748b'; // gray-500 як fallback
-  };
 
   return (
     <Card>
