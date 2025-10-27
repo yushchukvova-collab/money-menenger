@@ -64,6 +64,11 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
     );
   };
 
+  const COLORS = [
+    "#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#00c49f",
+    "#0088fe", "#ffbb28", "#ff8042", "#a4de6c", "#d0ed57"
+  ];
+
   return (
     <Card>
       <CardHeader>
@@ -89,7 +94,7 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
                     dataKey="value"
                   >
                     {data.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell key={`cell-${index}`} fill={entry.color || COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip content={<CustomTooltip />} />
