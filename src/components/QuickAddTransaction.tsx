@@ -1,3 +1,4 @@
+// FIX: Виправлено імпорти типів
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ import {
   ShoppingBag, Car, Home, Gamepad2, Heart, 
   TrendingUp, TrendingDown, Calendar 
 } from "lucide-react";
-import { Transaction, FinancialGoal, Category } from "@/hooks/useFinanceData";
+import { Transaction, FinancialGoal, Category } from "@/contexts/FinanceContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface QuickAddTransactionProps {

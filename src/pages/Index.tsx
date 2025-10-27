@@ -1,3 +1,4 @@
+// FIX: Оновлено імпорти для використання нового FinanceContext
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, TrendingUp, TrendingDown, Target, PiggyBank, Settings, Menu, X } from "lucide-react";
@@ -13,7 +14,7 @@ import { CategoryManagement } from "@/components/CategoryManagement";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { CurrencySelector } from "@/components/CurrencySelector";
 import { UserCounter } from "@/components/UserCounter";
-import { useFinanceData } from "@/hooks/useFinanceData";
+import { useFinanceContext } from "@/contexts/FinanceContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
   
   const { t, formatCurrency } = useLanguage();
   
+  // FIX: Використання нового useFinanceContext замість useFinanceData
   const { 
     data, 
     setInitialBalance, 
@@ -38,7 +40,7 @@ const Index = () => {
     updateCategory,
     deleteCategory,
     getCategorySpending
-  } = useFinanceData();
+  } = useFinanceContext();
 
   const monthlyStats = getMonthlyStats();
 

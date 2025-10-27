@@ -1,3 +1,4 @@
+// FIX: Виправлено імпорт типу FinancialGoal
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Target, Calendar } from "lucide-react";
-import { FinancialGoal } from "@/hooks/useFinanceData";
+import { FinancialGoal } from "@/contexts/FinanceContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface AddGoalModalProps {

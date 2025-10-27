@@ -1,3 +1,4 @@
+// FIX: Виправлено імпорт типу Category
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trash2, Edit, Plus, ShoppingBag, Car, Home, Gamepad2, Heart, Coffee, Shirt, BookOpen, Wallet, Briefcase, TrendingUp, Gift } from "lucide-react";
-import { Category } from "@/hooks/useFinanceData";
+import { Category } from "@/contexts/FinanceContext";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 

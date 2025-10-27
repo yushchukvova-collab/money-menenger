@@ -1,10 +1,11 @@
+// FIX: Виправлено імпорти типів
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { 
   ShoppingBag, Car, Home, Gamepad2, Heart, 
   MoreHorizontal, TrendingUp, Coffee, Shirt, BookOpen
 } from "lucide-react";
-import { Transaction, Category } from "@/hooks/useFinanceData";
+import { Transaction, Category } from "@/contexts/FinanceContext";
 
 const iconMap = {
   ShoppingBag,

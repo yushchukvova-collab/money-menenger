@@ -1,7 +1,7 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
-import { Transaction, Category, useFinanceData } from "@/contexts/FinanceContext"; // <-- виправлений імпорт
+import { Transaction, Category } from "@/contexts/FinanceContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ExpenseChartProps {
@@ -11,6 +11,19 @@ interface ExpenseChartProps {
 
 export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartProps) => {
   const { t, formatCurrency } = useLanguage();
+  // FIX: Додано responsive обробку для мобільних пристроїв
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   // Поточний місяць
   const thisMonth = new Date().toISOString().slice(0, 7); // YYYY-MM
@@ -33,12 +46,16 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
     })
     .filter(item => item.value > 0); // тільки категорії з витратами
 
-  const CustomTooltip = ({ active, payload }: any) => {
+  // FIX: Виправлено типи для tooltip
+  const CustomTooltip = ({ active, payload }: { 
+    active?: boolean; 
+    payload?: Array<{ name: string; value: number; payload: { name: string; value: number } }> 
+  }) => {
     if (active && payload && payload.length) {
       const data = payload[0];
       return (
         <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
-          <p className="font-medium">{data.name}</p>
+          <p className="font-medium">{data.payload.name}</p>
           <p className="text-sm text-muted-foreground">
             {formatCurrency(data.value)}
           </p>
@@ -48,10 +65,15 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
     return null;
   };
 
-  const CustomLegend = ({ payload }: any) => {
+  // FIX: Виправлено типи для legend
+  const CustomLegend = ({ payload }: { 
+    payload?: Array<{ value: string; color: string }> 
+  }) => {
+    if (!payload) return null;
+    
     return (
       <div className="flex flex-wrap justify-center gap-4 mt-4">
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry, index: number) => (
           <div key={index} className="flex items-center gap-2">
             <div
               className="w-3 h-3 rounded-full"
@@ -76,20 +98,21 @@ export const ExpenseChart = ({ transactions, expenseCategories }: ExpenseChartPr
       </CardHeader>
       <CardContent>
         {data.length === 0 ? (
-          <div className="h-64 flex items-center justify-center text-muted-foreground">
+          <div className="h-48 sm:h-64 flex items-center justify-center text-muted-foreground">
             {t('common.no_data')}
           </div>
         ) : (
           <>
-            <div className="h-64">
+            {/* FIX: Покращена адаптивність діаграми для мобільних пристроїв */}
+            <div className="h-48 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={data}
                     cx="50%"
                     cy="50%"
-                    innerRadius={40}
-                    outerRadius={80}
+                    innerRadius={isMobile ? 25 : 40}
+                    outerRadius={isMobile ? 60 : 80}
                     paddingAngle={5}
                     dataKey="value"
                   >

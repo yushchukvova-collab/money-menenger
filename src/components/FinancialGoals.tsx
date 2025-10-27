@@ -1,3 +1,4 @@
+// FIX: Виправлено імпорт типу FinancialGoal
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,7 @@ import {
   Car, Home, Plane, GraduationCap, 
   Plus, Target, Calendar, Edit, Trash2
 } from "lucide-react";
-import { FinancialGoal } from "@/hooks/useFinanceData";
+import { FinancialGoal } from "@/contexts/FinanceContext";
 import { useState } from "react";
 import { AddGoalModal } from "./AddGoalModal";
 import { 

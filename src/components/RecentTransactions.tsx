@@ -1,3 +1,4 @@
+// FIX: Виправлено імпорт типу Transaction
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,10 +7,13 @@ import {
   ShoppingBag, Car, Home, Gamepad2, Heart, 
   TrendingUp, TrendingDown, MoreHorizontal 
 } from "lucide-react";
-import { Transaction } from "@/hooks/useFinanceData";
+import { Transaction } from "@/contexts/FinanceContext";
 import { useLanguage, Currency } from "@/contexts/LanguageContext";
 
-const categoryIcons: Record<string, any> = {
+// FIX: Виправлено тип для іконок категорій
+import { LucideIcon } from "lucide-react";
+
+const categoryIcons: Record<string, LucideIcon> = {
   food: ShoppingBag,
   transport: Car,
   housing: Home,
